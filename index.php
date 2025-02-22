@@ -6,44 +6,46 @@
 	}
 	else{ 
 		if (!empty($_POST)){ //Se comprueba si los input del login estan vacios
-			if (empty($_POST['username1']) || empty($_POST['password1'])) {
+			if (empty($_POST['username']) || empty($_POST['password'])) {
 				$alert = 'Ingrese su usuario y contraseña';
 			}
 			else{
 				require 'php/conexionbd.php'; //Conexión a la base de datos
 
 				
-				$user = $_POST['username1'];
-				$psw = $_POST['password1'];
+				$user = $_POST['username'];
+				$psw = $_POST['password'];
 				//Consulta para buscar al usuario por nombre de usuario
 				$query = mysqli_query($conn,"SELECT * FROM usuarios WHERE username = '$user' ");
 				$result = mysqli_num_rows($query);
 				
 
 
-				if ($result > 0) {  
-					//Obtener los datos del usuario
+				if ($result > 0) {
+					// Obtener los datos del usuario
 					$data = mysqli_fetch_array($query);
-
-					//Verificar la contrasena ingresada con el hash almacenado
+					
+					// Verificar la contraseña ingresada con el hash almacenado
 					if(password_verify($psw,$data['password'])){
-						//Si la contrasena es correcta, iniciar sesion
-						session_start();//Asegurate de que las sesiones esten habilitadas
-						$_SESSION['active'] = true;
-						$_SESSION['idus'] = $data['id'];
-						$_SESSION['usernameus'] = $data['username'];
-						$_SESSION['rolus'] = $data['rol_id'];
-						header('location: sistema/');
-					} else{
-						$alert = 'Usuario y/o contraseña incorrecto';
+						// Verificar el rol del usuario
+						if ($data['rol_id'] == 1 || $data['rol_id'] == 2) { // Suponiendo que 1 es administrador y 2 es vendedor, ajusta según tu lógica
+							// Si el rol es permitido, iniciar sesión
+							session_start();
+							$_SESSION['active'] = true;
+							$_SESSION['idus'] = $data['id'];
+							$_SESSION['usernameus'] = $data['username'];
+							$_SESSION['rolus'] = $data['rol_id'];
+							header('location: sistema/');
+						} else {
+							$alert = 'No tienes acceso al sistema.';
+							session_destroy();
+						}
+					} else {
+						$alert = 'Usuario y/o contraseña incorrectos';
 						session_destroy();
 					}
-					
 				}
-				else{
-					$alert = 'Usuario y/o contraseña incorrecto';
-					session_destroy();
-				}
+				
 			}
 		}
 	}
@@ -220,12 +222,12 @@
 					<h2 class="">INICIAR SESIÓN</h2>
 					<form action= "" method="POST">
 						<div class="mb-3 ">
-							<label for="loginUser" class="form-label">Usuario</label>
-							<input class="form-control form-control-sm" type="text" placeholder="Usuario" name="username1" autocomplete="off" required>
+							<label for="username" class="form-label">Usuario</label>
+							<input class="form-control form-control-sm" type="text" id="username" placeholder="Usuario" name="username" autocomplete="off" required>
 						</div>
 						<div class="mb-3">
-							<label for="loginPassword" class="form-label">Contraseña</label>
-							<input class="form-control form-control-sm" id="loginPassword" type="password" placeholder="Contraseña" name="password1" autocomplete="off" required>
+							<label for="password" class="form-label">Contraseña</label>
+							<input class="form-control form-control-sm" id="password" type="password" placeholder="Contraseña" name="password" autocomplete="off" required>
 						</div>
 						
 						<button type="submit" class="btn boton">Iniciar Sesión</button>

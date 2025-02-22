@@ -187,58 +187,63 @@
 					</form>
 				</div>
 				<?php if ($_SESSION['rolus'] == 1): ?>
-				<div style="text-align: center; " class="">
 					<u><p>REGISTRAR PRODUCTO</p></u>
-				</div>
-				<?php
-					$mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
-				?>
-				<div>
-					<form action="procesar_agregar.php" method="POST">
-						<div class="login">
-							<div class="textbox d-flex align-items-center ">
-								<i class="fas fa-clipboard"></i>
-								<input 
-									type="text" 
-									class="form-control custom-input" 
-									placeholder="Nombre del producto" 
-									id="nombre_producto" 
-									name="nombre_producto" 
-									autocomplete="off" 
-									required>
-							</div>
-							<div class="textbox d-flex align-items-center">
-								<i class="fa-solid fa-boxes-stacked"></i>
-								<input 
-									type="text" 
-									class="form-control custom-input" 
-									placeholder="Cantidad en stock" 
-									id="stock" 
-									name="stock" 
-									autocomplete="off" 
-									required>
-							</div>
-							<div class="textbox d-flex align-items-center">
-								<i class="fas fa-dollar-sign"></i>
-								<input 
-									type="text" 
-									class="form-control custom-input" 
-									placeholder="Precio de venta unitario" 
-									id="precio_venta" 
-									name="precio_venta" 
-									autocomplete="off" 
-									required>
-							</div>
+					<div>
+						<form action="procesar_agregar.php" method="POST">
+							<div class="login">
+								<div class="textbox d-flex align-items-center">
+									<i class="fas fa-clipboard"></i>
+									<input type="text" class="form-control custom-input" placeholder="Nombre del producto" id="nombre_producto" name="nombre_producto" autocomplete="off" required>
+								</div>
+								
+								<div class="textbox d-flex align-items-center">
+									<i class="fa-solid fa-boxes-stacked"></i>
+									<input type="number" class="form-control custom-input" placeholder="Cantidad en stock" id="stock" name="stock" autocomplete="off" required>
+								</div>
+								
+								<div class="textbox d-flex align-items-center">
+									<i class="fas fa-dollar-sign"></i>
+									<input type="text" class="form-control custom-input" placeholder="Precio de venta unitario" id="precio_venta" name="precio_venta" autocomplete="off" required>
+								</div>
 
-							
-							<input class="btn boton-s" type="submit" value="Registrar">
-							<div class="alert" align-te>
-								<?php if (!empty($mensaje)) : ?>
-									<p><?php echo htmlspecialchars($mensaje); ?></p>
-								<?php endif; ?>
+								<div class="textbox d-flex align-items-center">
+									<i class="fas fa-box"></i>
+									<select class="form-control custom-input" id="tipo" name="tipo" required>
+										<option value="">Selecciona Tipo</option>
+										<option value="Cabeza">Cabeza</option>
+										<option value="Pies">Pies</option>
+										<option value="Torso">Torso</option>
+										<option value="ArmaPrimaria">Arma Primaria</option>
+										<option value="ArmaSecundaria">Arma Secundaria</option>
+									</select>
+								</div>
+
+								<div class="textbox d-flex align-items-center">
+									<i class="fas fa-star"></i>
+									<select class="form-control custom-input" id="rareza" name="rareza" required>
+										<option value="">Selecciona Rareza</option>
+										<option value="Comun">Común</option>
+										<option value="Rara">Rara</option>
+										<option value="Epica">Épica</option>
+										<option value="Legendaria">Legendaria</option>
+									</select>
+								</div>
+
+								<div class="textbox d-flex align-items-center">
+									<i class="fas fa-image"></i>
+									<input type="text" class="form-control custom-input" placeholder="URL de la imagen" id="image" name="image">
+								</div>
+
+								<div class="textbox d-flex align-items-center">
+									<i class="fas fa-align-left"></i>
+									<textarea class="form-control custom-input" placeholder="Descripción" id="descripcion" name="descripcion"></textarea>
+								</div>
+
+								<input class="btn boton-s" type="submit" value="Registrar">
 							</div>
-						</div>
-					</form>
+						</form>
+					</div>
+
 
 					<?php if ($_SESSION['rolus'] == 1): ?>
 						<u><p>ELIMINAR PRODUCTO</p></u>
@@ -281,8 +286,10 @@
 							<tr>
 								<th>ID Producto</th>
 								<th>Nombre del Producto</th>
+								<th>Tipo</th>
+								<th>Rareza</th>
 								<th>Stock</th>
-								<th>Precio de venta</th>
+								<th>Precio</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -308,16 +315,26 @@
 								<tr>
 									<td><?php echo $inventario['id']; ?></td>
 									<td><?php echo $inventario['nombre_producto']; ?></td>
+									<td><?php echo $inventario['tipo']; ?></td>
+									<td><?php echo $inventario['rareza']; ?></td>
 									<td><?php echo $inventario['stock']; ?></td>
 									<td><?php echo $inventario['precio_venta']; ?></td>
+									
+									<td><img src="<?php echo $inventario['image']; ?>" width="50"></td>
 									<td>
 										<?php if ($_SESSION['rolus'] == 1): ?>
-											<button class='btn boton-s' onclick="openModal('<?php echo $inventario['id']; ?>', '<?php echo $inventario['nombre_producto']; ?>', '<?php echo $inventario['stock']; ?>', '<?php echo $inventario['precio_venta']; ?>')">Modificar</button>
+											<button class='btn boton-s' 
+												onclick="openModalModificar('<?php echo $inventario['id']; ?>', '<?php echo $inventario['nombre_producto']; ?>', '<?php echo $inventario['tipo']; ?>', '<?php echo $inventario['stock']; ?>', '<?php echo $inventario['precio_venta']; ?>', '<?php echo $inventario['rareza']; ?>', '<?php echo $inventario['image']; ?>', '<?php echo $inventario['descripcion']; ?>')">
+												Modificar
+											</button>
 										<?php endif; ?>
+										<button class='btn boton-s' onclick="openModalDetalles('<?php echo $inventario['id']; ?>')">
+											Ver Detalles
+										</button>
 									</td>
 
-
 								</tr>
+
 							<?php
 							}
 
@@ -327,29 +344,91 @@
 							}
 							?>
 						</tbody>
-						<div id="modal" class="modal ">
+						<div id="modal-modificar" class="modal">
 							<div class="modal-content input">
-								<span class="close" onclick="closeModal()">&times;</span>
+								<span class="close" onclick="closeModal('modal-modificar')">&times;</span>
 								<h2>MODIFICAR PRODUCTO</h2>
 								<form method="POST" action="procesar_modificar.php">
 									<input type="hidden" id="modal-id" name="idp">
-									<div class="textbox d-flex align-items-center ">
+									
+									<div class="textbox d-flex align-items-center">
 										<i class="fas fa-clipboard"></i>
-										<input  class="form-control custom-input" type="text" placeholder="Nombre del producto" id="modal-nomp" name="nomp" required>
+										<input class="form-control custom-input" type="text" placeholder="Nombre del producto" id="modal-nomp" name="nomp" required>
 									</div>
-									<div class="textbox d-flex align-items-center ">
+
+									<div class="textbox d-flex align-items-center">
 										<i class="fa-solid fa-boxes-stacked"></i>
-										<input  class="form-control custom-input" type="number" placeholder="Stock" id="modal-stoc" name="stoc" required>
+										<input class="form-control custom-input" type="number" placeholder="Stock" id="modal-stoc" name="stoc" required>
 									</div>
-									<div class="textbox d-flex align-items-center ">
+
+									<div class="textbox d-flex align-items-center">
 										<i class="fas fa-dollar-sign"></i>
-										<input  class="form-control custom-input" type="number" step="0.01" placeholder="Precio de venta" id="modal-prev" name="prev" required>
+										<input class="form-control custom-input" type="number" step="0.01" placeholder="Precio de venta" id="modal-prev" name="prev" required>
 									</div>
+
+									<div class="textbox d-flex align-items-center">
+										<i class="fas fa-box"></i>
+										<select class="form-control custom-input" id="modal-tipo" name="tipo" required>
+											<option value="">Selecciona Tipo</option>
+											<option value="Cabeza">Cabeza</option>
+											<option value="Pies">Pies</option>
+											<option value="Torso">Torso</option>
+											<option value="ArmaPrimaria">Arma Primaria</option>
+											<option value="ArmaSecundaria">Arma Secundaria</option>
+										</select>
+									</div>
+
+									<div class="textbox d-flex align-items-center">
+										<i class="fas fa-star"></i>
+										<select class="form-control custom-input" id="modal-rareza" name="rareza" required>
+											<option value="">Selecciona Rareza</option>
+											<option value="Comun">Común</option>
+											<option value="Rara">Rara</option>
+											<option value="Epica">Épica</option>
+											<option value="Legendaria">Legendaria</option>
+										</select>
+									</div>
+
+									<div class="textbox d-flex align-items-center">
+										<i class="fas fa-image"></i>
+										<input type="text" class="form-control custom-input" placeholder="URL de la imagen" id="modal-image" name="image">
+									</div>
+
+									<div class="textbox d-flex align-items-center">
+										<i class="fas fa-align-left"></i>
+										<textarea class="form-control custom-input" placeholder="Descripción" id="modal-desc" name="descripcion"></textarea>
+									</div>
+
 									<div class="alert"></div>
 									<input class="btn boton-s" type="submit" value="Modificar">
 								</form>
 							</div>
 						</div>
+
+						<div id="modal-detalles" class="modal">
+							<div class="modal-content input">
+								<span class="close" onclick="closeModal('modal-detalles')">&times;</span>
+								<h2>DETALLES DEL PRODUCTO</h2>
+
+								<p><strong>Tipo:</strong> <span id="det-tipo"></span></p>
+								<p><strong>Rareza:</strong> <span id="det-rareza"></span></p>
+								<p><strong>Descripción:</strong> <span id="det-descripcion"></span></p>
+								<p><strong>Imagen:</strong> <br> <img id="det-image" src="" width="100"></p>
+
+								<h3>Estadísticas</h3>
+								<ul>
+									<li>Vida: <span id="det-vida"></span></li>
+									<li>Ataque: <span id="det-ataque"></span></li>
+									<li>Defensa: <span id="det-defensa"></span></li>
+									<li>Suerte: <span id="det-suerte"></span></li>
+									<li>Velocidad: <span id="det-velocidad"></span></li>
+									<li>Resistencia: <span id="det-resistencia"></span></li>
+									<li>Efectividad: <span id="det-efectividad"></span></li>
+								</ul>
+							</div>
+						</div>
+
+
 					</table>
 				</div>
 			</div>
@@ -357,18 +436,54 @@
 	</div>
 
 <script>
-	function openModal(id, nombre, stock, precio) {
+	function openModalModificar(id, nombre, tipo, stock, precio, rareza, image, descripcion) {
 		document.getElementById('modal-id').value = id;
 		document.getElementById('modal-nomp').value = nombre;
+		document.getElementById('modal-tipo').value = tipo;
 		document.getElementById('modal-stoc').value = stock;
 		document.getElementById('modal-prev').value = precio;
+		document.getElementById('modal-rareza').value = rareza;
+		document.getElementById('modal-image').value = image;
+		document.getElementById('modal-desc').value = descripcion;
 
-		document.getElementById('modal').style.display = 'block';
+		document.getElementById('modal-modificar').style.display = 'block';
+	}
+	
+
+	function openModalDetalles(id) {
+    fetch('obtener_detalles.php?id=' + id)
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            console.error('Error:', data.error);
+            alert('No se pudo cargar el producto');
+            return;
+        }
+        
+        
+        document.getElementById('det-tipo').innerText = data.tipo;
+        document.getElementById('det-rareza').innerText = data.rareza;
+        document.getElementById('det-descripcion').innerText = data.descripcion;
+        document.getElementById('det-image').src = data.image;
+
+        document.getElementById('det-vida').innerText = data.vida;
+        document.getElementById('det-ataque').innerText = data.ataque;
+        document.getElementById('det-defensa').innerText = data.defensa;
+        document.getElementById('det-suerte').innerText = data.suerte;
+        document.getElementById('det-velocidad').innerText = data.velocidad;
+        document.getElementById('det-resistencia').innerText = data.resistencia;
+        document.getElementById('det-efectividad').innerText = data.efectividad;
+
+        document.getElementById('modal-detalles').style.display = 'block';
+    })
+    .catch(error => console.error('Error al obtener los detalles:', error));
+}
+
+
+	function closeModal(id) {
+		document.getElementById(id).style.display = 'none';
 	}
 
-	function closeModal() {
-		document.getElementById('modal').style.display = 'none';
-	}
 
 
 </script>
