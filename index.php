@@ -54,7 +54,7 @@
 	<meta charset="utf-8"> 
 	<title>INNOVATEC</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="images/icono-logo.png">
+	<link rel="icon" href="images/runa-icon.png">
 	<!-- <link rel="stylesheet" href="styles/style.css"> -->
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
@@ -72,7 +72,7 @@
 		font-weight: 800; /* Usar peso de 700 (negrita) */
 	}
 	h2{
-		margin-bottom: 50px;
+		margin-top: 50px;
 	}
 
 	p {
@@ -109,11 +109,11 @@
 	.banner{
 		height: 100vh;
 		padding-left: 6vw;
-		background-image: url('images/banner-index.png');
+		background-image: url('images/runneCrafter.webp');
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-position: bottom right; 
-		background-size:50vw;
+		/* background-size:50vw; */
 	}
 	.servicios{
 		padding-top: 100px;
@@ -146,8 +146,11 @@
 	.contenido-interno {
         transition: transform 0.3s ease-in-out;
 		max-width: 580px;
-		background-color: rgb(0,0,0,0.5);
+		background-color: rgb(0,0,0,0.7);
+		
 		padding: 20px;
+		padding-top: 50px;
+		transform: translateY(100px);
     }
 	.borde{
 		
@@ -174,14 +177,14 @@
 
     @media (max-width: 768px) {
         .contenido-interno {
-            transform: translateY(-200px); /* Ajusta la cantidad que quieres que suba */
+            
 			max-width: 470px;
         }
 		
     }
 	@media (min-width: 769px) and (max-width: 1024px) {
         .contenido-interno {
-            transform: translateY(-100px); /* Ajusta la cantidad que quieres que suba */
+            
 			max-width: 540px;
         }
 			
@@ -208,125 +211,37 @@
 </head>
 <body>
 
-	 <!-- Navbar -->
-	 <nav class="navbar navbar-expand-lg navbar-black bg-black sticky-top" data-bs-theme="dark">
-        <div class="container">
-            <a class="navbar-brand" href="#inicio"><img src="images/logo-b.png" width="200" height="auto" title="Logo of a company" alt="Logo of a company" />
-			</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#inicio">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#servicios">Servicios</a>
-                    </li>
-                    
-                    <li class="nav-item ">
-                        <a class="nav-link log-in" href="#login">Iniciar Sesión</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
     <!-- Sección Inicio -->
-    <section id="inicio" class="d-flex justify-content-start align-items-center py-5 bg-black text-white text-center banner">
+    <section id="inicio" class="d-flex justify-content-start flex-column align-items-start py-5 bg-black text-white text-center banner">
         
 			<div class=" text-start d-flex flex-column contenido-interno">
-			<p class="lead text-start">CONOCE EL MEJOR</p>
-				<h1>SISTEMA DE INVENTARIO Y GESTIÓN DE VENTAS</h1>
-            	<p class="lead text-start">Descubre nuestros servicios y planes a tu medida.</p>
-				<div class="d-grid gap-2 col-6 ">
-					<a href="#login" class="btn boton">Inicar sesion</a>
-				</div>
+				<p class="lead text-start">El mejor sistema de inventario rúnico.</p>
+				<h1>ELSANTUARIO DE LAS RELIQUIAS ARCANAS</h1>
+            	<p class="lead text-start">¡Ven y equipa tu destino o vende al mejor precio!</p>
 				
 				
+				<div class="container formulario">
+					<h2 class="">INICIAR SESIÓN</h2>
+					<form action= "" method="POST">
+						<div class="mb-3 ">
+							<label for="loginUser" class="form-label">Usuario</label>
+							<input class="form-control" type="text" placeholder="Usuario" name="username1" autocomplete="off" required>
+						</div>
+						<div class="mb-3">
+							<label for="loginPassword" class="form-label">Contraseña</label>
+							<input class="form-control" id="loginPassword" type="password" placeholder="Contraseña" name="password1" autocomplete="off" required>
+						</div>
+						
+						<button type="submit" class="btn boton">Iniciar Sesión</button>
+						<div class="alert" ><?php echo isset($alert)? $alert : ''; ?></div>
+					</form>
+        		</div>
 			</div>
+			
 		
     </section>
 
-    <!-- Sección Servicios -->
-    <section id="servicios" class=" servicios d-flex">
-        <div class="container ">
-            <h2 class="text-center">NUESTROS SERVICIOS</h2>
-           <div class="row text-center">
-			
-				<div class="col-lg-4 servicio">
-                    <div class="card borde  ">
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <h5 class="card-title">SEGURIDAD</h5>
-                            <p class="card-text">Acceso completo o limitado dependiendo del rol de usuario.</p>
-							<ul>
-								<li>Acesso seguro al sistema bajo inicio de sesion</li>
-								<li>Administradores tienen incluido los accesos de empleados y tambien pueden modificar, eliminar productos y generar reportes de inventario.</li>
-								<li>Acceso al sistema bajo inicio de sesion.</li>
-								
-							</ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 servicio">
-                    <div class="card borde">
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <h5 class="card-title">GESTIÓN DE INVENTARIO</h5>
-							<p class="card-text">Maneja el inventario de todos tus productos de manera digital.</p>
-                            <ul>
-								<li>Muestra todo el inventario registrado.</li>
-								<li>Motor de busqueda por ID o Nombre del producto.</li>
-								<li>Registra, modifica y elimina productos.</li>
-								<li>Genera y descarga un reporte personalizado de inventario en formato excel.</li>
-							</ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 servicio">
-                    <div class="card borde">
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <h5 class="card-title">REGISTRO DE VENTAS</h5>
-                            <p class="card-text">Cuenta con una barra de busqueda de productos.</p>
-							<ul>
-								<li>Cuenta con una barra de busqueda de productos.</li>
-								<li>Motor de busqueda por ID o Nombre del producto.</li>
-								<li>Registra, modifica y elimina productos.</li>
-								<li>Genera y descarga un reporte personalizado de inventario en formato excel.</li>
-							</ul>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
 
-
-
-    <!-- Sección Iniciar Sesión -->
-    <section id="login" class=" bg-black text-white sesion">
-        <div class="container formulario">
-            <h2 class="">INICIAR SESIÓN</h2>
-            <form action= "" method="POST">
-                <div class="mb-3 ">
-                    <label for="loginUser" class="form-label">Usuario</label>
-                    <input class="form-control" type="text" placeholder="Usuario" name="username1" autocomplete="off" required>
-                </div>
-                <div class="mb-3">
-                    <label for="loginPassword" class="form-label">Contraseña</label>
-                    <input class="form-control" id="loginPassword" type="password" placeholder="Contraseña" name="password1" autocomplete="off" required>
-                </div>
-				
-                <button type="submit" class="btn boton">Iniciar Sesión</button>
-				<div class="alert" ><?php echo isset($alert)? $alert : ''; ?></div>
-            </form>
-        </div>
-    </section>
-
-
-
-
-	
 </body>
 </html>
