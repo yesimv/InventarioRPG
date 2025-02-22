@@ -95,10 +95,10 @@
 		font-stretch: 100%; /* Controla el ancho de la fuente (normal) */
 	}
     .nav-link:hover {
-        color: #eefb03 ;
+        color: #7fddea;
     }
 	.log-in{
-		color: #eefb03 ;
+		color: #7fddea ;
 	}
 	.log-in:hover{
 		color: white ;
@@ -138,10 +138,10 @@
 	}
 	.boton{
 		
-		background-color: #eefb03 ;
+		background-color: #7fddea ;
 	}
 	.boton:hover{
-		color: #eefb03;
+		color: #7fddea;
 	}
 	.contenido-interno {
         transition: transform 0.3s ease-in-out;
@@ -161,7 +161,7 @@
 	.borde h5{
 
 		text-decoration: underline;
-		text-decoration-color: #eefb03 ;
+		text-decoration-color: #7fddea ;
 		font-weight: 800; /* Usar peso de 700 (negrita) */
 
 	}
@@ -217,7 +217,7 @@
         
 			<div class=" text-start d-flex flex-column contenido-interno">
 				<p class="lead text-start">El mejor sistema de inventario rúnico.</p>
-				<h1>ELSANTUARIO DE LAS RELIQUIAS ARCANAS</h1>
+				<h1>EL SANTUARIO DE LAS RELIQUIAS ARCANAS</h1>
             	<p class="lead text-start">¡Ven y equipa tu destino o vende al mejor precio!</p>
 				
 				

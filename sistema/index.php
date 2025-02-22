@@ -12,7 +12,7 @@
 <head> 
 	<meta charset="utf-8"> 
 	<title>Productos</title>
-	<link rel="icon" href="../images/icono-logo.png">
+	<link rel="icon" href="../images/runa-icon.png">
 	<!-- <link rel="stylesheet" href="../styles/style.css"> -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;800&display=swap" rel="stylesheet">
@@ -24,12 +24,12 @@
 	body {
 		font-family: 'Montserrat', sans-serif;
 		background-color: #141414; 
-		color: #eefb03;
-		background-image: url('../images/capsula.png');
+		color: #7fddea;
+		background-image: url('../images/marco.png');
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-		background-position: 5% 90% ; 
-		background-size:10vw;
+		background-position: 50% 0% ; 
+		background-size:70vw;
 		
 	}
 	
@@ -78,19 +78,19 @@
 
 	.boton{
 		
-		background-color: #eefb03 ;
+		background-color: #7fddea ;
 	}
 	.boton:hover{
-		color: #eefb03;
+		color: #7fddea;
 		background-color: #25252b ;
 	}
 	.boton-s{
-		color: #eefb03;
+		color: #7fddea;
 		background-color: inherit;
 	}
 	.boton-s:hover{
 		color: black;
-		background-color: #eefb03 ;
+		background-color: #7fddea ;
 	}
 	.custom-input {
         background-color: #1a1b1c; /* Fondo oscuro */
@@ -141,7 +141,13 @@
 		line-height:1;
 		cursor: pointer;
 	}
-	
+	@media (min-width: 1200px) {
+        body{
+			background-position: 91% 0% ; 
+			background-size:65vw;
+		}
+			
+    }
 	
 	</style>
 

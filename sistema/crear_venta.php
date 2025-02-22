@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venta</title>
-    <link rel="icon" href="../images/icono-logo.png">
+    <link rel="icon" href="../images/runa-icon.png">
 	<!-- <link rel="stylesheet" href="../styles/style.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;800&display=swap" rel="stylesheet">
@@ -23,12 +23,13 @@
 	body {
 		font-family: 'Montserrat', sans-serif;
 		background-color: #141414; 
-		color: #eefb03;
-		background-image: url('../images/cubo.png');
+		color: #7fddea;
+		background-image: url('../images/Inner-shop.webp');
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-		background-position: 95% 90% ; 
-		background-size:20vw;
+		background-position: bottom center; 
+		
+        height: 100vh;
 	}
 	
 	/* Ejemplo de uso con variables */
@@ -77,19 +78,19 @@
 
 	.boton{
 		
-		background-color: #eefb03 ;
+		background-color: #7fddea ;
 	}
 	.boton:hover{
-		color: #eefb03;
+		color: #7fddea;
 		background-color: #25252b ;
 	}
 	.boton-s{
-		color: #eefb03;
+		color: #7fddea;
 		background-color: inherit;
 	}
 	.boton-s:hover{
 		color: black;
-		background-color: #eefb03 ;
+		background-color: #7fddea ;
 	}
 	.custom-input {
         background-color: #1a1b1c; /* Fondo oscuro */

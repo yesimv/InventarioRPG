@@ -45,9 +45,9 @@ if ($_SESSION['rolus'] == 1 && isset($_GET['export'])) {
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="icon" href="../images/icono-logo.png">
+    <link rel="icon" href="../images/runa-icon.png">
     <title>Reporte</title>
-    <link rel="icon" href="../images/icono-logo.png">
+    
 	<!-- <link rel="stylesheet" href="../styles/style.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;800&display=swap" rel="stylesheet">
@@ -58,7 +58,7 @@ if ($_SESSION['rolus'] == 1 && isset($_GET['export'])) {
 	body {
 		font-family: 'Montserrat', sans-serif;
 		background-color: #141414; 
-		color: #eefb03;
+		color: #7fddea;
 		background-image: url('../images/banner-index.png');
 		background-repeat: no-repeat;
 		background-attachment: fixed;
@@ -115,19 +115,19 @@ if ($_SESSION['rolus'] == 1 && isset($_GET['export'])) {
 
 	.boton{
 		
-		background-color: #eefb03 ;
+		background-color: #7fddea ;
 	}
 	.boton:hover{
-		color: #eefb03;
+		color: #7fddea;
 		background-color: #25252b ;
 	}
 	.boton-s{
-		color: #eefb03;
+		color: #7fddea;
 		background-color: inherit;
 	}
 	.boton-s:hover{
 		color: black;
-		background-color: #eefb03 ;
+		background-color: #7fddea ;
 	}
 	.custom-input {
         background-color: #1a1b1c; /* Fondo oscuro */
