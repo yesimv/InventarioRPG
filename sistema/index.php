@@ -459,25 +459,28 @@
             alert('No se pudo cargar el producto');
             return;
         }
-        
-        
-        document.getElementById('det-tipo').innerText = data.tipo;
-        document.getElementById('det-rareza').innerText = data.rareza;
-        document.getElementById('det-descripcion').innerText = data.descripcion;
-        document.getElementById('det-image').src = data.image;
 
-        document.getElementById('det-vida').innerText = data.vida;
-        document.getElementById('det-ataque').innerText = data.ataque;
-        document.getElementById('det-defensa').innerText = data.defensa;
-        document.getElementById('det-suerte').innerText = data.suerte;
-        document.getElementById('det-velocidad').innerText = data.velocidad;
-        document.getElementById('det-resistencia').innerText = data.resistencia;
-        document.getElementById('det-efectividad').innerText = data.efectividad;
+        // Verifica que los datos contengan lo esperado
+        console.log('Datos del producto:', data);
 
+        // Asigna los valores de los detalles al modal
+        document.getElementById('det-vida').innerText = data.vida || 'No disponible';
+        document.getElementById('det-ataque').innerText = data.ataque || 'No disponible';
+        document.getElementById('det-defensa').innerText = data.defensa || 'No disponible';
+        document.getElementById('det-suerte').innerText = data.suerte || 'No disponible';
+        document.getElementById('det-velocidad').innerText = data.velocidad || 'No disponible';
+        document.getElementById('det-resistencia').innerText = data.resistencia || 'No disponible';
+        document.getElementById('det-efectividad').innerText = data.efectividad || 'No disponible';
+
+        // Muestra el modal con los detalles
         document.getElementById('modal-detalles').style.display = 'block';
     })
-    .catch(error => console.error('Error al obtener los detalles:', error));
+    .catch(error => {
+        console.error('Error al obtener los detalles:', error);
+        alert('Hubo un problema al cargar los detalles');
+    });
 }
+
 
 
 	function closeModal(id) {

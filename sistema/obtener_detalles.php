@@ -1,29 +1,21 @@
 <?php
-include '../php/conexionbd.php';
-
+include '../php/conexionbd.php';  // Ruta correcta a tu archivo de conexión
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    
-    // Ajusta la consulta para seleccionar los campos correctos
-    $query = "SELECT i.nombre_producto, i.tipo, i.rareza, i.stock, i.precio_venta, i.descripcion, 
-              i.image, s.vida, s.ataque, s.defensa, s.suerte, s.velocidad, s.resistencia, s.efectividad
-              FROM inventario i 
-              LEFT JOIN stats s ON i.id = s.inventario_id 
-              WHERE i.id = ?";
-    
-    $stmt = $conexion->prepare($query);
+    $query = "SELECT * FROM inventario i LEFT JOIN stats s ON i.id = s.inventario_id WHERE i.id = ?";
+    $stmt = $conexion->prepare($query);  // Aquí ya debería estar la conexión
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $resultado = $stmt->get_result();
-    $producto = $resultado->fetch_assoc();
-    
-    // Verifica si el producto fue encontrado
-    if ($producto) {
+
+    if ($resultado->num_rows > 0) {
+        $producto = $resultado->fetch_assoc();
         echo json_encode($producto);
     } else {
-        // Si no se encuentra el producto, devuelve un error en JSON
         echo json_encode(["error" => "Producto no encontrado"]);
     }
+} else {
+    echo json_encode(["error" => "ID no especificado"]);
 }
 ?>
