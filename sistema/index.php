@@ -29,7 +29,7 @@
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-position: 50% 0% ; 
-		background-size:70vw;
+		background-size:120vh;
 		
 	}
 	
@@ -106,7 +106,7 @@
         color: #fff; /* Texto blanco */
         border-color: white; /* Color del borde al hacer foco */
         outline: none; /* Remover el contorno predeterminado */
-        box-shadow: 0 0 8px rgba(238, 251, 3, 0.2); /* Efecto de sombra opcional */
+        box-shadow: 0 0 8px rgba(127, 222, 234, 0.2); /* Efecto de sombra opcional */
     }
 	.custom-input::placeholder {
         color: #fff; /* Placeholder en blanco */
@@ -122,7 +122,7 @@
 		
 	}
 	.modal-content{
-		box-shadow: 0 0 8px rgba(238, 251, 3, 0.2); /* Efecto de sombra opcional */
+		box-shadow: 0 0 8px rgba(127, 222, 234, 0.2); /* Efecto de sombra opcional */
 		background-color: rgb(26,27,28,0.9);
 	}
 	.modal > div{
@@ -156,13 +156,9 @@
 	<div class="cuadro-oscuro p-3 sticky-top ">
 		<div class="row">
 			<div class="col-8">
-				<button type="button" class="btn boton-s active" onclick="window.location.href='index.php'" aria-pressed="true">Productos</button>
-				<button type="button" class="btn boton-s" onclick="window.location.href='crear_venta.php'">Venta</button>
-				<?php
-					if ($_SESSION['rolus'] == 1) {
-						echo "<button type='button' class='btn boton-s' onclick=\"window.location.href='generar_reporte.php'\">Reporte</button>";
-					}   
-				?>
+				<button type="button" class="btn boton-s active" onclick="window.location.href='index.php'" aria-pressed="true">Inventario</button>
+				<button type="button" class="btn boton-s" onclick="window.location.href='crear_venta.php'">Transacción</button>
+				
 			</div>
 			<div class="col-4 text-end">
 				<button type="button" class="btn btn-outline-dark boton" onclick="window.location.href='../php/salir.php'">Cerrar sesión</button>
@@ -190,7 +186,7 @@
 						<button class="btn boton-s" type="submit" style="padding: 5px 10px;">Buscar</button>
 					</form>
 				</div>
-
+				<?php if ($_SESSION['rolus'] == 1): ?>
 				<div style="text-align: center; " class="">
 					<u><p>REGISTRAR PRODUCTO</p></u>
 				</div>
@@ -268,6 +264,7 @@
 						</div>
 					<?php endif; ?>
 				</div>
+				<?php endif; ?>
 			</div>
 			
 			<div class="col cuadro-oscuro shadow rounded">

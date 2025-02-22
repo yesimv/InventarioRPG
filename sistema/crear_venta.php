@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venta</title>
+    <title>Transacción</title>
     <link rel="icon" href="../images/runa-icon.png">
 	<!-- <link rel="stylesheet" href="../styles/style.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -106,7 +106,7 @@
         color: #fff; /* Texto blanco */
         border-color: white; /* Color del borde al hacer foco */
         outline: none; /* Remover el contorno predeterminado */
-        box-shadow: 0 0 8px rgba(238, 251, 3, 0.2); /* Efecto de sombra opcional */
+        box-shadow: 0 0 8px rgba(127, 222, 234, 0.2); /* Efecto de sombra opcional */
     }
 	.custom-input::placeholder {
         color: #fff; /* Placeholder en blanco */
@@ -144,13 +144,9 @@
 <div class="cuadro-oscuro p-3 sticky-top ">
     <div class="row">
         <div class="col-8">
-            <button type="button" class="btn boton-s" onclick="window.location.href='index.php'" >Productos</button>
-            <button type="button" class="btn boton-s active" onclick="window.location.href='crear_venta.php'" aria-pressed="true">Venta</button>
-            <?php
-                if ($_SESSION['rolus'] == 1) {
-                    echo "<button type='button' class='btn boton-s' onclick=\"window.location.href='generar_reporte.php'\">Reporte</button>";
-                }   
-            ?>
+            <button type="button" class="btn boton-s" onclick="window.location.href='index.php'" >Inventario</button>
+            <button type="button" class="btn boton-s active" onclick="window.location.href='crear_venta.php'" aria-pressed="true">Transacción</button>
+            
         </div>
         <div class="col-4 text-end">
             <button type="button" class="btn boton" onclick="window.location.href='../php/salir.php'">Cerrar sesión</button>
@@ -199,7 +195,7 @@
                 </table>
 
                 <p class="my-4">TOTAL GENERAL: $<span id="totalGeneral">0.00</span></p>
-                <button class="btn boton-s mx-2" id="btnConfirmar">Confirmar Venta</button>
+                <button class="btn boton-s mx-2" id="btnConfirmar">Confirmar Transacción</button>
             </div>
             </div>
             </div>
