@@ -52,7 +52,7 @@
 <html>
 <head> <!--Atributos necesarios para el funcionamiento-->
 	<meta charset="utf-8"> 
-	<title>INNOVATEC</title>
+	<title>LA FORJA ARCANA</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="images/runa-icon.png">
 	<!-- <link rel="stylesheet" href="styles/style.css"> -->
@@ -78,10 +78,15 @@
 	p {
 		font-family: 'Montserrat', sans-serif;
 		font-weight: 400; /* Usar peso normal */
+		margin-bottom: 0;
+		font-size:  0.9rem;
 	}
 	.card-text{
 		font-weight: 600;
 		line-height:1em;
+	}
+	.form-label{
+		margin-bottom: 0px;
 	}
 	li{
 		text-align: start;
@@ -113,29 +118,8 @@
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		background-position: bottom right; 
-		/* background-size:50vw; */
 	}
-	.servicios{
-		padding-top: 100px;
-		padding-bottom: 100px;
-		
-		padding-left: 20vw;
-		background-image: url('images/capsula.png');
-		background-repeat: no-repeat;
-		background-position: 20px center ; 
-		background-size:20vw;
-	}
-	.sesion{
-		padding-top: 100px;
-		padding-bottom: 100px;
-		height: 500px;
-		padding-left: 6vw;
-		background-image: url('images/cubo.png');
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-position: 90% 90%; 
-		background-size:30vw;
-	}
+	
 	.boton{
 		
 		background-color: #7fddea ;
@@ -145,12 +129,10 @@
 	}
 	.contenido-interno {
         transition: transform 0.3s ease-in-out;
-		max-width: 580px;
 		background-color: rgb(0,0,0,0.7);
-		
 		padding: 20px;
 		padding-top: 50px;
-		transform: translateY(100px);
+		border-radius: 0.375rem;
     }
 	.borde{
 		
@@ -199,13 +181,26 @@
 		.servicio{
 			padding-top:20px;
 		}
+		.banner{
+		
+		background-position: top center; 
+		background-size: cover;
+	}
 	}
 	@media (max-width: 1200px) {
             
 		.servicios{
 			padding-left: 20px;
 		}
+		
     }
+	@media (min-width: 990px) and (max-width: 1280px){
+		.banner{
+		
+		background-size: contain;
+		
+	}
+	}
 	
 </style>
 </head>
@@ -213,12 +208,12 @@
 
 
     <!-- Sección Inicio -->
-    <section id="inicio" class="d-flex justify-content-start flex-column align-items-start py-5 bg-black text-white text-center banner">
+    <section id="inicio" class="d-flex justify-content-center flex-column align-items-start  bg-black text-white text-center banner">
         
 			<div class=" text-start d-flex flex-column contenido-interno">
-				<p class="lead text-start">El mejor sistema de inventario rúnico.</p>
-				<h1>EL SANTUARIO DE LAS RELIQUIAS ARCANAS</h1>
-            	<p class="lead text-start">¡Ven y equipa tu destino o vende al mejor precio!</p>
+				<p class="text-start">El mejor sistema de inventario rúnico.</p>
+				<h1>LA FORJA ARCANA</h1>
+            	<p class="text-start">¡Ven y equipa tu destino o vende al mejor precio!</p>
 				
 				
 				<div class="container formulario">
@@ -226,11 +221,11 @@
 					<form action= "" method="POST">
 						<div class="mb-3 ">
 							<label for="loginUser" class="form-label">Usuario</label>
-							<input class="form-control" type="text" placeholder="Usuario" name="username1" autocomplete="off" required>
+							<input class="form-control form-control-sm" type="text" placeholder="Usuario" name="username1" autocomplete="off" required>
 						</div>
 						<div class="mb-3">
 							<label for="loginPassword" class="form-label">Contraseña</label>
-							<input class="form-control" id="loginPassword" type="password" placeholder="Contraseña" name="password1" autocomplete="off" required>
+							<input class="form-control form-control-sm" id="loginPassword" type="password" placeholder="Contraseña" name="password1" autocomplete="off" required>
 						</div>
 						
 						<button type="submit" class="btn boton">Iniciar Sesión</button>
