@@ -11,7 +11,7 @@
 <html>
 <head> 
 	<meta charset="utf-8"> 
-	<title>Productos</title>
+	<title>Inventario</title>
 	<link rel="icon" href="../images/runa-icon.png">
 	<!-- <link rel="stylesheet" href="../styles/style.css"> -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
@@ -25,11 +25,17 @@
 		font-family: 'Montserrat', sans-serif;
 		background-color: #141414; 
 		color: #7fddea;
-		background-image: url('../images/marco.png');
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-position: 50% 0% ; 
-		background-size:120vh;
+		/* Agregar un degradado oscuro */
+		background-image: 
+		url('../images/marco.png'),
+        linear-gradient(rgba(0, 0, 0, .9), rgba(0, 0, 0, 1)),  
+        url('../images/centro-marco.webp');
+        
+
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-attachment: fixed, fixed, fixed;
+    background-position: 50% 0%, center bottom, center center;
+    background-size:120vh, cover, cover;
 		
 	}
 	
@@ -141,13 +147,7 @@
 		line-height:1;
 		cursor: pointer;
 	}
-	@media (min-width: 1200px) {
-        body{
-			background-position: 91% 0% ; 
-			background-size:65vw;
-		}
-			
-    }
+	
 	
 	</style>
 
