@@ -1,0 +1,38 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #0056b3;
+}
+
+.navbar {
+    background-color: #eefb03;
+}
+
+.navbar .nav-link {
+    color: white;
+}
+
+.navbar .nav-link:hover {
+    color: #ffcc00;
+}
+
+#inicio {
+    background-color: #0056b3;
+    color: white;
+    padding: 2rem 0;
+}
+
+#planes {
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+}
+
+button {
+    font-size: 1rem;
+    border-radius: 0.3rem;
+}
