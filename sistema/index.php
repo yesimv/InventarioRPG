@@ -448,7 +448,6 @@
 
 		document.getElementById('modal-modificar').style.display = 'block';
 	}
-	
 
 	function openModalDetalles(id) {
 		fetch(`obtener_detalles.php?id=${id}`)
@@ -462,6 +461,10 @@
 
 			// Verifica que los datos contengan lo esperado
 			console.log('Datos del producto:', data);
+			document.getElementById('det-tipo').innerText = data.tipo || "No disponible";
+			document.getElementById('det-rareza').innerText = data.rareza || "No disponible";
+			document.getElementById('det-descripcion').innerText = data.descripcion || "No disponible";
+			document.getElementById('det-image').src = data.image || "No disponible";
 
 			// Asigna los valores de los detalles al modal
 			document.getElementById('det-vida').innerText = data.vida || 'No disponible';

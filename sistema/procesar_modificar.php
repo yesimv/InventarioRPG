@@ -6,10 +6,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nomp'];
     $stock = $_POST['stoc'];
     $precio = $_POST['prev'];
+    $tipo = $_POST['tipo'];
+    $descripcion = $_POST['descripcion'];
+    $rareza = $_POST['rareza'];
+    $imagen = $_POST['image'];
 
-    $sql = "UPDATE inventario SET nombre_producto = ?, stock = ?, precio_venta = ? WHERE id = ?";
+    $sql = "UPDATE inventario SET nombre_producto = ?, stock = ?, precio_venta = ?, tipo = ?, descripcion = ?, rareza = ?, image = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sidi", $nombre, $stock, $precio, $id);
+    $stmt->bind_param("sidssssi", $nombre, $stock, $precio, $tipo, $descripcion, $rareza, $imagen, $id);
 
     if ($stmt->execute()) {
         header('Location: index.php?mensajem=Producto modificado exitosamente');
