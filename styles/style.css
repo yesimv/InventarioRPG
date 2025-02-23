@@ -1,38 +1,141 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-}
+	/* Aplica Montserrat a todo el cuerpo de la página */
+	body {
+		font-family: 'Montserrat', sans-serif;
+	}
 
-h1 {
-    font-size: 2.5rem;
-    color: #0056b3;
-}
+	/* Ejemplo de uso con variables */
+	h1, h2, h3 {
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 800; /* Usar peso de 700 (negrita) */
+	}
+	h2{
+		margin-top: 50px;
+	}
 
-.navbar {
-    background-color: #7fddea;
-}
+	p {
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 400; /* Usar peso normal */
+		margin-bottom: 0;
+		font-size:  0.9rem;
+	}
+	.card-text{
+		font-weight: 600;
+		line-height:1em;
+	}
+	.form-label{
+		margin-bottom: 0px;
+	}
+	li{
+		text-align: start;
+		line-height:1em; 
+		padding-bottom: 10px;
+	}
+	/* Puedes jugar con las variables de la fuente (weight, width, etc.) */
+	.custom-text {
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 300; /* Peso más delgado */
+		font-stretch: 100%; /* Controla el ancho de la fuente (normal) */
+	}
+    .nav-link:hover {
+        color: #7fddea;
+    }
+	.log-in{
+		color: #7fddea ;
+	}
+	.log-in:hover{
+		color: white ;
+	}
+	.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23eefb03' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+	}
+	.banner{
+		height: 100vh;
+		padding-left: 6vw;
+		background-image: url('images/runneCrafter.webp');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: bottom right; 
+	}
+	
+	.boton{
+		
+		background-color: #7fddea ;
+	}
+	.boton:hover{
+		color: #7fddea;
+	}
+	.contenido-interno {
+        transition: transform 0.3s ease-in-out;
+		background-color: rgb(0,0,0,0.7);
+		padding: 20px;
+		padding-top: 50px;
+		border-radius: 0.375rem;
+    }
+	.borde{
+		
+		min-height: 360px;
+		background-color: rgb(255,255,255,0.5);
+		padding-top:20px;
+	}
+	.borde h5{
 
-.navbar .nav-link {
-    color: white;
-}
+		text-decoration: underline;
+		text-decoration-color: #7fddea ;
+		font-weight: 800; /* Usar peso de 700 (negrita) */
 
-.navbar .nav-link:hover {
-    color: #ffcc00;
-}
+	}
+	.formulario{
+		
+		margin: inherit;
+		max-width:300px;
+	}
+	.alert{
+		padding-left:0px;
+		padding-right:0px;
+	}
 
-#inicio {
-    background-color: #0056b3;
-    color: white;
-    padding: 2rem 0;
-}
-
-#planes {
-    background-color: #f8f9fa;
-    padding: 2rem 0;
-}
-
-button {
-    font-size: 1rem;
-    border-radius: 0.3rem;
-}
+    @media (max-width: 768px) {
+        .contenido-interno {
+            
+			max-width: 470px;
+        }
+		
+    }
+	@media (min-width: 769px) and (max-width: 1024px) {
+        .contenido-interno {
+            
+			max-width: 540px;
+        }
+			
+    }
+	@media (max-width: 991px) {
+       
+		.borde{
+		
+			min-height: 250px;
+			
+		}
+		.servicio{
+			padding-top:20px;
+		}
+		.banner{
+		
+		background-position: top center; 
+		background-size: cover;
+	}
+	}
+	@media (max-width: 1200px) {
+            
+		.servicios{
+			padding-left: 20px;
+		}
+		
+    }
+	@media (min-width: 990px) and (max-width: 1280px){
+		.banner{
+		
+		background-size: contain;
+		
+	}
+	}
+	
