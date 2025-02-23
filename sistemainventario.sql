@@ -20,9 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sistemainventario`
 --
-
+CREATE DATABASE sistemainventario;
 -- --------------------------------------------------------
-
+USE DATABASE sistemainventario;
 --
 -- Estructura de tabla para la tabla `detalle_ventas`
 --
