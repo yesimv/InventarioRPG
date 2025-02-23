@@ -323,9 +323,13 @@
 									<td><img src="<?php echo $inventario['image']; ?>" width="50"></td>
 									<td>
 										<?php if ($_SESSION['rolus'] == 1): ?>
+											<form id="eliminarRegistro" action="procesar_eliminar.php" method="POST"></form>
 											<button class='btn boton-s' 
 												onclick="openModalModificar('<?php echo $inventario['id']; ?>', '<?php echo $inventario['nombre_producto']; ?>', '<?php echo $inventario['tipo']; ?>', '<?php echo $inventario['stock']; ?>', '<?php echo $inventario['precio_venta']; ?>', '<?php echo $inventario['rareza']; ?>', '<?php echo $inventario['image']; ?>', '<?php echo $inventario['descripcion']; ?>')">
 												Modificar
+											</button>
+											<button type="submit" class='btn boton-s' form="eliminarRegistro" name="idreg" value='<?php echo $inventario['id']; ?>'>
+												Eliminar
 											</button>
 										<?php endif; ?>
 										<button class='btn boton-s' onclick="openModalDetalles('<?php echo $inventario['id']; ?>')">
