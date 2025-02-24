@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 -- Base de datos: `sistemaweb`
 --
 
--- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `detalle_ventas`
 --

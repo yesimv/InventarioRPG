@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Validar que el ID del producto esté presente
     if (isset($_POST['idreg']) && !empty($_POST['idreg'])) {
         $idreg = $_POST['idreg'];
-
+        
         // Verificar si el producto existe
         $query = "SELECT * FROM inventario WHERE id = ?";
         $stmt = $conn->prepare($query);

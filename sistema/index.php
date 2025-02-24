@@ -323,9 +323,13 @@
 									<td><img src="<?php echo $inventario['image']; ?>" width="50"></td>
 									<td>
 										<?php if ($_SESSION['rolus'] == 1): ?>
+											<form id="eliminarRegistro" action="procesar_eliminar.php" method="POST"></form>
 											<button class='btn boton-s' 
 												onclick="openModalModificar('<?php echo $inventario['id']; ?>', '<?php echo $inventario['nombre_producto']; ?>', '<?php echo $inventario['tipo']; ?>', '<?php echo $inventario['stock']; ?>', '<?php echo $inventario['precio_venta']; ?>', '<?php echo $inventario['rareza']; ?>', '<?php echo $inventario['image']; ?>', '<?php echo $inventario['descripcion']; ?>')">
 												Modificar
+											</button>
+											<button type="submit" class='btn boton-s' form="eliminarRegistro" name="idreg" value='<?php echo $inventario['id']; ?>'>
+												Eliminar
 											</button>
 										<?php endif; ?>
 										<button class='btn boton-s' onclick="openModalDetalles('<?php echo $inventario['id']; ?>')">
@@ -448,38 +452,41 @@
 
 		document.getElementById('modal-modificar').style.display = 'block';
 	}
-	
 
 	function openModalDetalles(id) {
-    fetch('obtener_detalles.php?id=' + id)
-    .then(response => response.json())
-    .then(data => {
-        if (data.error) {
-            console.error('Error:', data.error);
-            alert('No se pudo cargar el producto');
-            return;
-        }
+		fetch(`obtener_detalles.php?id=${id}`)
+		.then(response => response.json())
+		.then(data => {
+			if (data.error) {
+				console.error('Error:', data.error);
+				alert('No se pudo cargar el producto');
+				return;
+			}
 
-        // Verifica que los datos contengan lo esperado
-        console.log('Datos del producto:', data);
+			// Verifica que los datos contengan lo esperado
+			console.log('Datos del producto:', data);
+			document.getElementById('det-tipo').innerText = data.tipo || "No disponible";
+			document.getElementById('det-rareza').innerText = data.rareza || "No disponible";
+			document.getElementById('det-descripcion').innerText = data.descripcion || "No disponible";
+			document.getElementById('det-image').src = data.image || "No disponible";
 
-        // Asigna los valores de los detalles al modal
-        document.getElementById('det-vida').innerText = data.vida || 'No disponible';
-        document.getElementById('det-ataque').innerText = data.ataque || 'No disponible';
-        document.getElementById('det-defensa').innerText = data.defensa || 'No disponible';
-        document.getElementById('det-suerte').innerText = data.suerte || 'No disponible';
-        document.getElementById('det-velocidad').innerText = data.velocidad || 'No disponible';
-        document.getElementById('det-resistencia').innerText = data.resistencia || 'No disponible';
-        document.getElementById('det-efectividad').innerText = data.efectividad || 'No disponible';
+			// Asigna los valores de los detalles al modal
+			document.getElementById('det-vida').innerText = data.vida || 'No disponible';
+			document.getElementById('det-ataque').innerText = data.ataque || 'No disponible';
+			document.getElementById('det-defensa').innerText = data.defensa || 'No disponible';
+			document.getElementById('det-suerte').innerText = data.suerte || 'No disponible';
+			document.getElementById('det-velocidad').innerText = data.velocidad || 'No disponible';
+			document.getElementById('det-resistencia').innerText = data.resistencia || 'No disponible';
+			document.getElementById('det-efectividad').innerText = data.efectividad || 'No disponible';
 
-        // Muestra el modal con los detalles
-        document.getElementById('modal-detalles').style.display = 'block';
-    })
-    .catch(error => {
-        console.error('Error al obtener los detalles:', error);
-        alert('Hubo un problema al cargar los detalles');
-    });
-}
+			// Muestra el modal con los detalles
+			document.getElementById('modal-detalles').style.display = 'block';
+		})
+		.catch(error => {
+			console.error('Error al obtener los detalles:', error);
+			alert('Hubo un problema al cargar los detalles');
+		});
+	}
 
 
 
