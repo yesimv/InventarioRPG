@@ -3,7 +3,7 @@ include '../php/conexionbd.php';  // Ruta correcta a tu archivo de conexión
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "SELECT * FROM inventario i LEFT JOIN stats s ON i.id = s.inventario_id WHERE i.id = ?";
+    $query = "SELECT i.*, s.vida, s.ataque, s.defensa, s.suerte, s.velocidad, s.resistencia, s.efectividad FROM inventario i LEFT JOIN stats s ON i.id = s.inventario_id WHERE i.id = ?";
     $stmt = $conn->prepare($query);  // Aquí ya debería estar la conexión
     $stmt->bind_param("i", $id);
     $stmt->execute();

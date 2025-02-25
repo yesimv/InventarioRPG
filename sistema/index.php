@@ -239,7 +239,58 @@
 									<textarea class="form-control custom-input" placeholder="Descripción" id="descripcion" name="descripcion"></textarea>
 								</div>
 
-								<input class="btn boton-s" type="submit" value="Registrar">
+								<div class="align-items-center">
+									<h2 class="btn boton-s" onclick="openModalStats()">Estadísticas</h2>
+								</div>
+								
+								 <!-- Modal -->
+								<div class="modal" id="modal-stats">
+									<div class="modal-dialog">
+										<div class="modal-content">
+												<span class="close" onclick="closeModal('modal-stats')">&times;</span>
+												<h5 class="modal-title" id="statsModalLabel">Estadísticas del Equipo</h5>
+												<div class="modal-body">
+													<div class="stats-container d-flex flex-wrap align-items-center gap-2">
+														<div class="form-group">
+															<label for="vida" class="font-weight-bold">Vida</label>
+															<input type="number" class="form-control" id="vida" name="stats[]" min="0" max="999" value="0">
+														</div>
+
+														<div class="form-group">
+															<label for="ataque" class="font-weight-bold">Ataque</label>
+															<input type="number" class="form-control" id="ataque" name="stats[]" min="0" max="999" value="0">
+														</div>
+
+														<div class="form-group">
+															<label for="defensa" class="font-weight-bold">Defensa</label>
+															<input type="number" class="form-control" id="defensa" name="stats[]" min="0" max="999" value="0">
+														</div>
+
+														<div class="form-group">
+															<label for="suerte" class="font-weight-bold">Suerte</label>
+															<input type="number" class="form-control" id="suerte" name="stats[]" min="0" max="999" value="0">
+														</div>
+
+														<div class="form-group">
+															<label for="velocidad" class="font-weight-bold">Velocidad</label>
+															<input type="number" class="form-control" id="velocidad" name="stats[]" min="0" max="999" value="0">
+														</div>
+
+														<div class="form-group">
+															<label for="resistencia" class="font-weight-bold">Resistencia</label>
+															<input type="number" class="form-control" id="resistencia" name="stats[]" min="0" max="999" value="0">
+														</div>
+
+														<div class="form-group">
+															<label for="efectividad" class="font-weight-bold">Efectividad</label>
+															<input type="number" class="form-control" id="efectividad" name="stats[]" min="0" max="999" value="0">
+														</div>
+													</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<input class="btn boton-s" type="submit" value="Registrar"></input>
 							</div>
 						</form>
 					</div>
@@ -298,12 +349,10 @@
 						$buscar = isset($_GET['buscar']) ? $_GET['buscar'] : '';
 
 						// Ajustar la consulta SQL con el filtro
-						$sql = "SELECT * FROM inventario";
+						$sql = "SELECT i.*, s.vida , s.ataque, s.defensa, s.suerte, s.velocidad, s.resistencia, s.efectividad FROM inventario i RIGHT JOIN stats s ON i.id = s.inventario_id";
 						if (!empty($buscar)) {
-							$sql .= " WHERE id LIKE '%$buscar%' OR nombre_producto LIKE '%$buscar%'";
+							$sql .= " WHERE i.id LIKE '%$buscar%' OR i.nombre_producto LIKE '%$buscar%'";
 						}
-						
-						
 
 						// Ejecutar la consulta
 						$result = mysqli_query($conn, $sql);
@@ -325,13 +374,14 @@
 										<?php if ($_SESSION['rolus'] == 1): ?>
 											<form id="eliminarRegistro" action="procesar_eliminar.php" method="POST"></form>
 											<button class='btn boton-s' 
-												onclick="openModalModificar('<?php echo $inventario['id']; ?>', '<?php echo $inventario['nombre_producto']; ?>', '<?php echo $inventario['tipo']; ?>', '<?php echo $inventario['stock']; ?>', '<?php echo $inventario['precio_venta']; ?>', '<?php echo $inventario['rareza']; ?>', '<?php echo $inventario['image']; ?>', '<?php echo $inventario['descripcion']; ?>')">
+												onclick="openModalModificar('<?php echo $inventario['id']; ?>', '<?php echo $inventario['nombre_producto']; ?>', '<?php echo $inventario['tipo']; ?>', '<?php echo $inventario['stock']; ?>', '<?php echo $inventario['precio_venta']; ?>', '<?php echo $inventario['rareza']; ?>', '<?php echo $inventario['image']; ?>', '<?php echo $inventario['descripcion']; ?>', '<?php echo $inventario['vida']; ?>', '<?php echo $inventario['ataque']; ?>', '<?php echo $inventario['defensa']; ?>', '<?php echo $inventario['suerte']; ?>', '<?php echo $inventario['velocidad']; ?>', '<?php echo $inventario['resistencia']; ?>', '<?php echo $inventario['efectividad']; ?>')">
 												Modificar
 											</button>
 											<button type="submit" class='btn boton-s' form="eliminarRegistro" name="idreg" value='<?php echo $inventario['id']; ?>'>
 												Eliminar
 											</button>
 										<?php endif; ?>
+										<script>console.log('<?php echo $inventario['id']; ?>')</script>
 										<button class='btn boton-s' onclick="openModalDetalles('<?php echo $inventario['id']; ?>')">
 											Ver Detalles
 										</button>
@@ -403,6 +453,43 @@
 										<textarea class="form-control custom-input" placeholder="Descripción" id="modal-desc" name="descripcion"></textarea>
 									</div>
 
+									<div class="stats-container d-flex flex-wrap align-items-center gap-2">
+										<div class="form-group">
+											<label for="vida" class="font-weight-bold">Vida</label>
+											<input type="number" class="form-control" id="modal-vida" name="stats[]" min="0" max="999" value="0">
+										</div>
+
+										<div class="form-group">
+											<label for="ataque" class="font-weight-bold">Ataque</label>
+											<input type="number" class="form-control" id="modal-ataque" name="stats[]" min="0" max="999" value="0">
+										</div>
+
+										<div class="form-group">
+											<label for="defensa" class="font-weight-bold">Defensa</label>
+											<input type="number" class="form-control" id="modal-defensa" name="stats[]" min="0" max="999" value="0">
+										</div>
+
+										<div class="form-group">
+											<label for="suerte" class="font-weight-bold">Suerte</label>
+											<input type="number" class="form-control" id="modal-suerte" name="stats[]" min="0" max="999" value="0">
+										</div>
+
+										<div class="form-group">
+											<label for="velocidad" class="font-weight-bold">Velocidad</label>
+											<input type="number" class="form-control" id="modal-velocidad" name="stats[]" min="0" max="999" value="0">
+										</div>
+
+										<div class="form-group">
+											<label for="resistencia" class="font-weight-bold">Resistencia</label>
+											<input type="number" class="form-control" id="modal-resistencia" name="stats[]" min="0" max="999" value="0">
+										</div>
+
+										<div class="form-group">
+											<label for="efectividad" class="font-weight-bold">Efectividad</label>
+											<input type="number" class="form-control" id="modal-efectividad" name="stats[]" min="0" max="999" value="0">
+										</div>
+									</div>
+
 									<div class="alert"></div>
 									<input class="btn boton-s" type="submit" value="Modificar">
 								</form>
@@ -440,7 +527,11 @@
 	</div>
 
 <script>
-	function openModalModificar(id, nombre, tipo, stock, precio, rareza, image, descripcion) {
+	function openModalStats() {
+		document.getElementById('modal-stats').style.display = 'block';
+	}
+
+	function openModalModificar(id, nombre, tipo, stock, precio, rareza, image, descripcionm, vida, ataque, defensa, suerte, velocidad, resistencia, efectividad) {
 		document.getElementById('modal-id').value = id;
 		document.getElementById('modal-nomp').value = nombre;
 		document.getElementById('modal-tipo').value = tipo;
@@ -449,6 +540,13 @@
 		document.getElementById('modal-rareza').value = rareza;
 		document.getElementById('modal-image').value = image;
 		document.getElementById('modal-desc').value = descripcion;
+		document.getElementById('modal-vida').value = vida;
+		document.getElementById('modal-ataque').value = ataque;
+		document.getElementById('modal-defensa').value = defensa;
+		document.getElementById('modal-suerte').value = suerte;
+		document.getElementById('modal-velocidad').value = velocidad;
+		document.getElementById('modal-resistencia').value = resistencia;
+		document.getElementById('modal-efectividad').value = efectividad;
 
 		document.getElementById('modal-modificar').style.display = 'block';
 	}
@@ -462,7 +560,6 @@
 				alert('No se pudo cargar el producto');
 				return;
 			}
-
 			// Verifica que los datos contengan lo esperado
 			console.log('Datos del producto:', data);
 			document.getElementById('det-tipo').innerText = data.tipo || "No disponible";
